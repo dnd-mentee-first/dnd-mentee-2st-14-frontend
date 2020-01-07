@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1012542198301",
+    "firebase_url": "https://jangmadang-d5f30.firebaseio.com",
+    "project_id": "jangmadang-d5f30",
+    "storage_bucket": "jangmadang-d5f30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012542198301:android:f6f4f77edafe1ab7036cf4",
+        "android_client_info": {
+          "package_name": "dnd.madang.jang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1012542198301-qq46vq38oprcfo0ule5ni1v7e1k4iovl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn4UcsBJC8zhO2YPvqQXfuehayhCLOCwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1012542198301-qq46vq38oprcfo0ule5ni1v7e1k4iovl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
