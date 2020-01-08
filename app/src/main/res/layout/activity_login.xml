@@ -24,12 +24,12 @@
         android:layout_height="59dp"
         android:layout_marginStart="72dp"
         android:layout_marginLeft="72dp"
-        android:layout_marginTop="456dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ID" />
 
     <Button
         android:id="@+id/button"
@@ -37,9 +37,33 @@
         android:layout_height="50dp"
         android:layout_marginStart="68dp"
         android:layout_marginLeft="68dp"
-        android:layout_marginTop="528dp"
+        android:layout_marginTop="13dp"
         android:text="Login"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/PW" />
+
+    <EditText
+        android:id="@+id/Wrong_PW"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="비밀번호를 잊어버리셨나요?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <EditText
+        android:id="@+id/New_guest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="332dp"
+        android:layout_marginLeft="332dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="장마당이 처음이신가요 ?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
