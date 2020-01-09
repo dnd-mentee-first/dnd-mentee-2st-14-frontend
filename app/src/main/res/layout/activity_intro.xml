@@ -11,7 +11,7 @@
         android:background="@drawable/introbg">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/logo"
             android:layout_width="124dp"
             android:layout_height="64dp"
             android:layout_marginStart="143dp"

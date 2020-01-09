@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
+import kotlinx.android.synthetic.main.activity_intro.*
 
 class IntroActivity : AppCompatActivity() {
 
@@ -12,20 +16,21 @@ class IntroActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
+        val anim = AnimationUtils.loadAnimation(applicationContext,R.anim.fadein)
+        logo.startAnimation(anim)
+
 
         val intent = Intent(this,MainActivity::class.java)
         switch_activity(intent)
 
     }
 
-    fun switch_activity(intent: Intent) {
+    private fun switch_activity(intent: Intent) {
         val handler = Handler()
 
         val millisTime = 1000
         val handlerTask = object : Runnable {
             override fun run() {
-                // task 발생
-
                 startActivity(intent)
             }
         }
