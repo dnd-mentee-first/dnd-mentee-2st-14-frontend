@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
 
-</LinearLayout>
+<EditText
+    android:id="@+id/ID"
+    android:layout_width="483dp"
+    android:layout_height="67dp"
+    android:layout_marginStart="68dp"
+    android:layout_marginLeft="68dp"
+    android:layout_marginTop="400dp"
+    android:ems="10"
+    android:hint="ID"
+    android:inputType="textPersonName"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<EditText
+    android:id="@+id/PW"
+    android:layout_width="485dp"
+    android:layout_height="59dp"
+    android:layout_marginStart="68dp"
+    android:layout_marginLeft="68dp"
+    android:ems="10"
+    android:hint="password"
+    android:inputType="textPassword"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/ID" />
+
+<Button
+    android:id="@+id/button"
+    android:layout_width="485dp"
+    android:layout_height="50dp"
+    android:layout_marginStart="68dp"
+    android:layout_marginLeft="68dp"
+    android:layout_marginTop="13dp"
+    android:background="#D0000000"
+    android:text="Login"
+    android:textColor="#FFFFFF"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/PW" />
+
+<EditText
+    android:id="@+id/WrongIDPW"
+    android:layout_width="182dp"
+    android:layout_height="44dp"
+    android:layout_marginStart="220dp"
+    android:layout_marginLeft="220dp"
+    android:layout_marginTop="16dp"
+    android:ems="10"
+    android:inputType="textPersonName"
+    android:text="아이디 / 비밀번호 찾기"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/button" />
+
+<EditText
+    android:id="@+id/New_guest"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="204dp"
+    android:layout_marginLeft="204dp"
+    android:layout_marginTop="324dp"
+    android:ems="10"
+    android:inputType="textPersonName"
+    android:text="혹시 장마당이 처음이신가요 ?"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/button" />
+
+<ImageView
+    android:id="@+id/imageView2"
+    android:layout_width="180dp"
+    android:layout_height="188dp"
+    android:layout_marginStart="208dp"
+    android:layout_marginLeft="208dp"
+    android:layout_marginTop="128dp"
+    app:layout_constraintBottom_toTopOf="@+id/ID"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:srcCompat="@drawable/logo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

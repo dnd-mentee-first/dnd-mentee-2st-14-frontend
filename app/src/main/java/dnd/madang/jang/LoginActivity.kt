@@ -10,5 +10,5 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login) // 레이아웃 파일이랑 연결하는 코드
     }
 }
-//s
-//sign up test2
+//
+//sign up test
