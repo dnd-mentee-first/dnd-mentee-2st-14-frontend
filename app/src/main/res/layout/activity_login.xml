@@ -85,15 +85,5 @@ android:layout_height="match_parent">
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="135dp"
-        tools:layout_editor_absoluteY="572dp" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
