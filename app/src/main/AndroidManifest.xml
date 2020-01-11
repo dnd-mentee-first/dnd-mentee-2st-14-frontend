@@ -11,7 +11,7 @@
         android:theme="@style/full_Screen">
         <meta-data
             android:name="com.google.android.actions"
-            android:resource="@xml/custom_check_box" />
+            android:resource="@drawable/custom_check_box" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -22,35 +22,33 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-<<<<<<< HEAD
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
-=======
     <activity android:name=".LoginActivity">
         <intent-filter>
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-
-    <activity android:name=".SignupActivity">
-        <intent-filter>
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-
     <activity android:name=".FindidpwActivity">
         <intent-filter>
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-</application>
->>>>>>> b4b8d4fcc5a90369d6b869915731a7c380ce6951
-
+        <activity android:name=".SelfCertificationActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TermsOfUseActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SignupPasswordActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
 </manifest>

@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.WindowManager
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_termsofuse.*
 
 class TermsOfUseActivity : AppCompatActivity() {
