@@ -11,12 +11,14 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login) // 레이아웃 파일이랑 연결하는 코드
         val intent = Intent(this,SignupActivity::class.java)
-
+        val intent2 = Intent(this,FindidpwActivity::class.java)
         newguestbtn.setOnClickListener{
             startActivity(intent)
 
-        }//이벤트 처리
-        //액티비티 전환 : Intent 사용
+        }
+        WrongIDPWbtn.setOnClickListener{
+            startActivity(intent2)
+        }
     }
 }
 //
