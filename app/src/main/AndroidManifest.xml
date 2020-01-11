@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="dnd.madang.jang">
+    package="dnd.madang.jang">
 
-<application
-    android:allowBackup="true"
-    android:icon="@drawable/icon"
-    android:label="@string/app_name"
-    android:roundIcon="@drawable/icon"
-    android:supportsRtl="true"
-    android:theme="@style/full_Screen">
-    <activity android:name=".MainActivity">
-        <intent-filter>
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/icon"
+        android:supportsRtl="true"
+        android:theme="@style/full_Screen">
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/custom_check_box" />
 
-    <activity android:name=".IntroActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".IntroActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+<<<<<<< HEAD
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+=======
     <activity android:name=".LoginActivity">
         <intent-filter>
             <category android:name="android.intent.category.LAUNCHER" />
@@ -40,5 +51,6 @@ package="dnd.madang.jang">
         </intent-filter>
     </activity>
 </application>
+>>>>>>> b4b8d4fcc5a90369d6b869915731a7c380ce6951
 
 </manifest>
