@@ -50,19 +50,21 @@ android:layout_height="match_parent">
         android:layout_marginLeft="152dp"
         android:layout_marginTop="128dp"
         app:layout_constraintBottom_toTopOf="@+id/ID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.018"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.365"
-        tools:srcCompat="@drawable/logo" />
+        app:layout_constraintVertical_bias="0.153" />
 
     <Button
         android:id="@+id/WrongIDPW.btn"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="170dp"
         android:layout_height="39dp"
         android:layout_marginStart="120dp"
         android:layout_marginLeft="120dp"
         android:layout_marginTop="8dp"
-        android:background="#FFFFFF"
+        android:background="#00FFFFFF"
         android:text="아이디/비밀번호찾기"
         android:textColor="#000000"
         android:textSize="12sp"
