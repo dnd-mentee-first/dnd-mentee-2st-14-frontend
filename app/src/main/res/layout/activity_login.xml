@@ -43,7 +43,7 @@ android:layout_height="match_parent">
         app:layout_constraintTop_toBottomOf="@+id/PW" />
 
     <Button
-        android:id="@+id/WrongIDPW.btn"
+        android:id="@+id/WrongIDPWbtn"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="170dp"
         android:layout_height="39dp"
@@ -58,7 +58,7 @@ android:layout_height="match_parent">
         app:layout_constraintTop_toBottomOf="@+id/login_btn" />
 
     <Button
-        android:id="@+id/newguest.btn"
+        android:id="@+id/newguestbtn"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="200dp"
         android:layout_height="38dp"
@@ -71,7 +71,8 @@ android:layout_height="match_parent">
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <ImageView
         android:id="@+id/imageView"
