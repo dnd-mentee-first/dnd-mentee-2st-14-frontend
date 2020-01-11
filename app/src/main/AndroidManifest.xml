@@ -22,6 +22,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+<<<<<<< HEAD
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -31,5 +32,25 @@
             </intent-filter>
         </activity>
     </application>
+=======
+    <activity android:name=".LoginActivity">
+        <intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+    <activity android:name=".SignupActivity">
+        <intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+    <activity android:name=".FindidpwActivity">
+        <intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+</application>
+>>>>>>> b4b8d4fcc5a90369d6b869915731a7c380ce6951
 
 </manifest>
