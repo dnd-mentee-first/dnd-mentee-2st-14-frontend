@@ -30,7 +30,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-    <activity android:name=".FindidpwActivity">
+    <activity android:name=".Findidpw.FindidpwActivity">
         <intent-filter>
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
