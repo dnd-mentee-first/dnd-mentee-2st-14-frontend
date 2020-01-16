@@ -15,7 +15,12 @@ class SignupPasswordActivity : AppCompatActivity(){
 
         buttonPasswordSet.setOnClickListener {
             // 비밀번호 일치여부 확인 할 것!
-            startActivity(intent)
+            println(editTextPassWord.text.toString())
+            println(editTextPassWordConfirm.text.toString())
+            if(editTextPassWord.text.toString().equals(editTextPassWordConfirm.text.toString())) {
+                println("작동")
+                startActivity(intent)
+            }
         }
     }
 }
