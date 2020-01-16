@@ -24,7 +24,6 @@ class SelfCertificationActivity : AppCompatActivity(){
 
         checkNumberButton.setOnClickListener {
             startActivity(intent)
-
         }
     }
 
