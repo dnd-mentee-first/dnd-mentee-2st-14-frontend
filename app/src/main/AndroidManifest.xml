@@ -11,7 +11,7 @@
         android:theme="@style/full_Screen">
         <meta-data
             android:name="com.google.android.actions"
-            android:resource="@drawable/custom_check_box" />
+            android:resource="@drawable/tos_check_box_selector" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -52,15 +52,11 @@
         </activity>
         <activity android:name=".SignupNicknameActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".SignupAddressActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
