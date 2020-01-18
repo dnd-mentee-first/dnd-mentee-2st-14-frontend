@@ -6,5 +6,6 @@
     <color name="darkBrown">#2C2626</color>
     <color name="clear">#00FFFFFF</color>
     <color name= "colorWhite">#FFFFFF</color>
+    <color name= "blue_theme">#0d2645</color>
 
 </resources>

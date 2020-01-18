@@ -13,8 +13,8 @@
     </style>
 
     <style name="full_Screen_darkBrown" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/darkBrown</item>
-        <item name="android:statusBarColor">@color/darkBrown</item>
+        <item name="colorPrimary">@color/blue_theme</item>
+        <item name="android:statusBarColor">@color/blue_theme</item>
     </style>
 
 
