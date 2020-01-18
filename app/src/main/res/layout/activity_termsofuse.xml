@@ -173,10 +173,10 @@
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/textViewNext"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintHorizontal_bias="0.912"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.403" />
+        app:layout_constraintVertical_bias="0.333" />
 
     <CheckBox
         android:id="@+id/checkBox5"
@@ -189,10 +189,10 @@
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/textViewNext"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/checkBox4"
-        app:layout_constraintVertical_bias="0.106" />
+        app:layout_constraintVertical_bias="0.063" />
 
     <CheckBox
         android:id="@+id/checkBox3"
@@ -242,7 +242,7 @@
         app:layout_constraintHorizontal_bias="0.794"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/checkBox3"
-        app:layout_constraintVertical_bias="0.083" />
+        app:layout_constraintVertical_bias="0.038" />
 
     <ImageButton
         android:id="@+id/buttonNext"
