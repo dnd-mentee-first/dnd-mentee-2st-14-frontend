@@ -12,7 +12,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="296dp"
-        android:background="@android:color/background_dark"
+        android:background="@drawable/button_background_db"
         android:text="확인"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
