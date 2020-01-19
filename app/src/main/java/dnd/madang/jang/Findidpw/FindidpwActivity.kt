@@ -11,10 +11,6 @@ class FindidpwActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_findidpw)
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.findidpwlay, FindidFragment())
-            .commit()
-
         findid_btn.setOnClickListener {
         supportFragmentManager.beginTransaction()
         .replace(R.id.findidpwlay, FindidFragment())
