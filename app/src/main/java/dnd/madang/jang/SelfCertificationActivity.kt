@@ -14,7 +14,7 @@ import com.google.firebase.auth.*
 import kotlinx.android.synthetic.main.activity_selfcertification.*
 import java.util.concurrent.TimeUnit
 
-class SelfCertificationActivity : AppCompatActivity(){
+class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
 
     // [START declare_auth]
     private lateinit var auth: FirebaseAuth
@@ -31,7 +31,7 @@ class SelfCertificationActivity : AppCompatActivity(){
         val intent = Intent(this, SignupPasswordActivity::class.java)
 
         // Set Language
-        auth.setLanguageCode("kr")
+        // auth.setLanguageCode("kr")
 
         // Restore instance state
         if (savedInstanceState != null) {
@@ -39,9 +39,9 @@ class SelfCertificationActivity : AppCompatActivity(){
         }
 
         // Assign click listeners
-        //buttonStartVerification.setOnClickListener(this)
-        //buttonVerifyPhone.setOnClickListener(this)
-        //buttonResend.setOnClickListener(this)
+        buttonStartVerification.setOnClickListener(this)
+        buttonVerifyPhone.setOnClickListener(this)
+        buttonResend.setOnClickListener(this)
         //signOutButton.setOnClickListener(this)
 
         // [START initialize_auth]
@@ -83,6 +83,7 @@ class SelfCertificationActivity : AppCompatActivity(){
                 if (e is FirebaseAuthInvalidCredentialsException) {
                     // Invalid request
                     // [START_EXCLUDE]
+                    // 오류 예상 지점
                     fieldPhoneNumber.error = "Invalid phone number."
                     // [END_EXCLUDE]
                 } else if (e is FirebaseTooManyRequestsException) {
@@ -121,16 +122,13 @@ class SelfCertificationActivity : AppCompatActivity(){
         // [END phone_auth_callbacks]
 
         // My Source
-        getNumButton.setOnClickListener {
-            showHide(checkNumberTextView)
-            showHide(checkNumberButton)
-            showHide(fieldVerificationCode)
-        }
-        fieldPhoneNumber.addTextChangedListener(PhoneNumberFormattingTextWatcher()) // -(dash)문자 자동 입력
-
-        checkNumberButton.setOnClickListener {
-            startActivity(intent)
-        }
+//        buttonStartVerification.setOnClickListener {
+//            showHide(checkNumberTextView)
+//            showHide(buttonVerifyPhone)
+//            showHide(fieldVerificationCode)
+//            showHide(buttonResend)
+//        }
+        //fieldPhoneNumber.addTextChangedListener(PhoneNumberFormattingTextWatcher()) // -(dash)문자 자동 입력
     }
 
     //My Source
@@ -185,6 +183,7 @@ class SelfCertificationActivity : AppCompatActivity(){
         val credential = PhoneAuthProvider.getCredential(verificationId!!, code)
         // [END verify_with_code]
         signInWithPhoneAuthCredential(credential)
+
     }
 
     // [START resend_verification]
@@ -257,31 +256,27 @@ class SelfCertificationActivity : AppCompatActivity(){
         when (uiState) {
             STATE_INITIALIZED -> {
                 // Initialized state, show only the phone number field and start button
-                enableViews(//buttonStartVerification,
-                     fieldPhoneNumber)
+                enableViews(buttonStartVerification, fieldPhoneNumber)
                 disableViews(buttonVerifyPhone, buttonResend, fieldVerificationCode)
-                detail.text = null
+                //detail.text = null
             }
             STATE_CODE_SENT -> {
                 // Code sent state, show the verification field, the
                 enableViews(buttonVerifyPhone, buttonResend, fieldPhoneNumber, fieldVerificationCode)
-                disableViews(//buttonStartVerification
-                     )
-                detail.setText(R.string.status_code_sent)
+                disableViews(buttonStartVerification)
+                //detail.setText(R.string.status_code_sent)
             }
             STATE_VERIFY_FAILED -> {
                 // Verification has failed, show all options
-                enableViews(//buttonStartVerification,
-                     buttonVerifyPhone, buttonResend, fieldPhoneNumber,
+                enableViews(buttonStartVerification, buttonVerifyPhone, buttonResend, fieldPhoneNumber,
                     fieldVerificationCode)
-                detail.setText(R.string.status_verification_failed)
+                //detail.setText(R.string.status_verification_failed)
             }
             STATE_VERIFY_SUCCESS -> {
                 // Verification has succeeded, proceed to firebase sign in
-                disableViews(//buttonStartVerification,
-                     buttonVerifyPhone, buttonResend, fieldPhoneNumber,
+                disableViews(buttonStartVerification, buttonVerifyPhone, buttonResend, fieldPhoneNumber,
                     fieldVerificationCode)
-                detail.setText(R.string.status_verification_succeeded)
+                //detail.setText(R.string.status_verification_succeeded)
 
                 // Set the verification text based on the credential
                 if (cred != null) {
@@ -292,10 +287,12 @@ class SelfCertificationActivity : AppCompatActivity(){
                     }
                 }
             }
-            STATE_SIGNIN_FAILED ->
+            STATE_SIGNIN_FAILED ->{
                 // No-op, handled by sign-in check
-                detail.setText(R.string.status_sign_in_failed)
+                //detail.setText(R.string.status_sign_in_failed)
+            }
             STATE_SIGNIN_SUCCESS -> {
+                startActivity(intent)
             }
         } // Np-op, handled by sign-in check
 
@@ -303,23 +300,24 @@ class SelfCertificationActivity : AppCompatActivity(){
             // Signed out
 
 
-            status.setText(R.string.signed_out)
+            //status.setText(R.string.signed_out)
         } else {
             // Signed in
-            phoneAuthFields.visibility = View.GONE
-            signedInButtons.visibility = View.VISIBLE
+            //phoneAuthFields.visibility = View.GONE
+            //signedInButtons.visibility = View.VISIBLE
 
             enableViews(fieldPhoneNumber, fieldVerificationCode)
             fieldPhoneNumber.text = null
             fieldVerificationCode.text = null
 
-            status.setText(R.string.signed_in)
-            detail.text = getString(R.string.firebase_status_fmt, user.uid)
+            //status.setText(R.string.signed_in)
+            //detail.text = getString(R.string.firebase_status_fmt, user.uid)
         }
     }
 
     private fun validatePhoneNumber(): Boolean {
         val phoneNumber = fieldPhoneNumber.text.toString()
+        println(phoneNumber)
         if (TextUtils.isEmpty(phoneNumber)) {
             fieldPhoneNumber.error = "Invalid phone number."
             return false
@@ -348,6 +346,7 @@ class SelfCertificationActivity : AppCompatActivity(){
                 }
 
                 startPhoneNumberVerification(fieldPhoneNumber.text.toString())
+
             }
             R.id.buttonVerifyPhone -> {
                 val code = fieldVerificationCode.text.toString()
@@ -357,6 +356,8 @@ class SelfCertificationActivity : AppCompatActivity(){
                 }
 
                 verifyPhoneNumberWithCode(storedVerificationId, code)
+                //로그인 화면으로 돌아가기
+                //startActivity(intent)
             }
             R.id.buttonResend -> resendVerificationCode(fieldPhoneNumber.text.toString(), resendToken)
             //R.id.signOutButton -> signOut()
