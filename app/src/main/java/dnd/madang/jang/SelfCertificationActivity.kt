@@ -301,8 +301,7 @@ class SelfCertificationActivity : AppCompatActivity(){
 
         if (user == null) {
             // Signed out
-            phoneAuthFields.visibility = View.VISIBLE
-            signedInButtons.visibility = View.GONE
+
 
             status.setText(R.string.signed_out)
         } else {
@@ -359,7 +358,7 @@ class SelfCertificationActivity : AppCompatActivity(){
 
                 verifyPhoneNumberWithCode(storedVerificationId, code)
             }
-            //R.id.buttonResend -> resendVerificationCode(fieldPhoneNumber.text.toString(), resendToken)
+            R.id.buttonResend -> resendVerificationCode(fieldPhoneNumber.text.toString(), resendToken)
             //R.id.signOutButton -> signOut()
         }
     }
