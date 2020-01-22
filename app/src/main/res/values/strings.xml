@@ -3,4 +3,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="status_verification_failed">본인인증에 실패하였습니다.</string>
+    <string name="status_verification_succeeded">본인인증에 성공하였습니다.</string>
+    <!--수정할 것-->>
+    <string name="status_code_sent">status_code_sent</string>
+    <string name="instant_validation">instant_validation</string>
+    <string name="status_sign_in_failed">status_sign_in_failed</string>
+    <string name="signed_out">signed_out</string>
+    <string name="signed_in">signed_in</string>
+    <string name="firebase_status_fmt">firebase_status_fmt</string>
 </resources>
