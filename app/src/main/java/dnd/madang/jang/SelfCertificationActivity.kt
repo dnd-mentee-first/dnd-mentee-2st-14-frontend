@@ -28,7 +28,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selfcertification)
-        val intent = Intent(this, SignupPasswordActivity::class.java)
+
 
         // Set Language
         // auth.setLanguageCode("kr")
@@ -48,7 +48,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
         // [END initialize_auth]
-
+        auth.setLanguageCode("kr")
         // Initialize phone auth callbacks
         // [START phone_auth_callbacks]
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -123,12 +123,8 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
 
         // My Source
 //        buttonStartVerification.setOnClickListener {
-//            showHide(checkNumberTextView)
-//            showHide(buttonVerifyPhone)
-//            showHide(fieldVerificationCode)
-//            showHide(buttonResend)
 //        }
-        //fieldPhoneNumber.addTextChangedListener(PhoneNumberFormattingTextWatcher()) // -(dash)문자 자동 입력
+        fieldPhoneNumber.addTextChangedListener(PhoneNumberFormattingTextWatcher()) // -(dash)문자 자동 입력
     }
 
     //My Source
@@ -144,6 +140,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
+        signOut()
         val currentUser = auth.currentUser
         updateUI(currentUser)
 
@@ -239,8 +236,10 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             updateUI(STATE_SIGNIN_SUCCESS, user)
+            println("if")
         } else {
             updateUI(STATE_INITIALIZED)
+            println("else")
         }
     }
 
@@ -317,12 +316,10 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun validatePhoneNumber(): Boolean {
         val phoneNumber = fieldPhoneNumber.text.toString()
-        println(phoneNumber)
         if (TextUtils.isEmpty(phoneNumber)) {
             fieldPhoneNumber.error = "Invalid phone number."
             return false
         }
-
         return true
     }
 
@@ -344,9 +341,12 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                 if (!validatePhoneNumber()) {
                     return
                 }
-
                 startPhoneNumberVerification(fieldPhoneNumber.text.toString())
-
+                showHide(checkNumberTextView)
+                showHide(buttonStartVerification)
+                showHide(buttonVerifyPhone)
+                showHide(buttonResend)
+                showHide(fieldVerificationCode)
             }
             R.id.buttonVerifyPhone -> {
                 val code = fieldVerificationCode.text.toString()
@@ -357,7 +357,8 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
 
                 verifyPhoneNumberWithCode(storedVerificationId, code)
                 //로그인 화면으로 돌아가기
-                //startActivity(intent)
+                val intent = Intent(this, SignupPasswordActivity::class.java)
+                startActivity(intent)
             }
             R.id.buttonResend -> resendVerificationCode(fieldPhoneNumber.text.toString(), resendToken)
             //R.id.signOutButton -> signOut()
