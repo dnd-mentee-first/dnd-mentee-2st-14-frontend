@@ -20,7 +20,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var auth: FirebaseAuth
     // [END declare_auth]
 
-    
+
     private var verificationInProgress = false
     private var storedVerificationId: String? = ""
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
@@ -32,7 +32,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
 
 
         // Set Language
-        // auth.setLanguageCode("kr")
+        // auth.setLanguageCode("ko")
 
         // Restore instance state
         if (savedInstanceState != null) {
@@ -316,6 +316,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun validatePhoneNumber(): Boolean {
+        //수정 할 부분
         val phoneNumber = fieldPhoneNumber.text.toString()
         if (TextUtils.isEmpty(phoneNumber)) {
             fieldPhoneNumber.error = "Invalid phone number."
@@ -342,7 +343,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                 if (!validatePhoneNumber()) {
                     return
                 }
-                startPhoneNumberVerification(fieldPhoneNumber.text.toString())
+                startPhoneNumberVerification("+82"+fieldPhoneNumber.text.toString())
                 showHide(checkNumberTextView)
                 showHide(buttonStartVerification)
                 showHide(buttonVerifyPhone)
