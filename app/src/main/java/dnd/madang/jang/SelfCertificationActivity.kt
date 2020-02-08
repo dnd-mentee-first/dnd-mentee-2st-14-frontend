@@ -20,6 +20,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var auth: FirebaseAuth
     // [END declare_auth]
 
+    
     private var verificationInProgress = false
     private var storedVerificationId: String? = ""
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
