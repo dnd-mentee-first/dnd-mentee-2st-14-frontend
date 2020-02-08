@@ -21,8 +21,7 @@
         <TextView
             android:id="@+id/checkNumberTextView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_height="0dp"
             android:text="인증번호"
             android:textColor="#000000"
             android:textSize="20dp"
@@ -30,50 +29,34 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.091"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/getNumButton" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="본인인증을 위한 휴대폰 번호를 입력해주세요."
-            android:textColor="@color/darkBrown"
-            android:textSize="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.233"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.15" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonStartVerification" />
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
             android:text="본인인증"
             android:textColor="@color/darkBrown"
             android:textSize="40dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.114"
+            app:layout_constraintHorizontal_bias="0.117"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <EditText
             android:id="@+id/fieldPhoneNumber"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="010-0000-0000"
             android:inputType="phone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
         <Button
-            android:id="@+id/getNumButton"
+            android:id="@+id/buttonStartVerification"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background_db"
@@ -85,18 +68,19 @@
 
         <EditText
             android:id="@+id/fieldVerificationCode"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
+            android:layout_width="299dp"
+            android:layout_height="53dp"
             android:layout_marginTop="4dp"
             android:ems="10"
             android:inputType="number"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintHorizontal_bias="0.276"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkNumberTextView" />
 
         <Button
+            android:id="@+id/buttonVerifyPhone"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="372dp"
@@ -122,6 +106,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/buttonResend"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.032"
+            app:layout_constraintStart_toEndOf="@+id/fieldVerificationCode"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.332"
+            app:srcCompat="@drawable/button_refresh"
+            tools:srcCompat="@drawable/button_refresh" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
