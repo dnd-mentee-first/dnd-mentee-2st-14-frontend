@@ -6,13 +6,16 @@ import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import kotlinx.android.synthetic.main.activity_selfcertification.*
+import org.json.JSONObject
 import java.util.concurrent.TimeUnit
+
 
 class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -84,7 +87,6 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                 if (e is FirebaseAuthInvalidCredentialsException) {
                     // Invalid request
                     // [START_EXCLUDE]
-                    // 오류 예상 지점
                     fieldPhoneNumber.error = "Invalid phone number."
                     // [END_EXCLUDE]
                 } else if (e is FirebaseTooManyRequestsException) {
@@ -338,17 +340,31 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View) {
+        val intent = Intent(this, LoginActivity::class.java)
         when (view.id) {
             R.id.buttonStartVerification -> {
                 if (!validatePhoneNumber()) {
                     return
                 }
-                startPhoneNumberVerification("+82"+fieldPhoneNumber.text.toString())
-                showHide(checkNumberTextView)
-                showHide(buttonStartVerification)
-                showHide(buttonVerifyPhone)
-                showHide(buttonResend)
-                showHide(fieldVerificationCode)
+                val reg = Regex("[^0-9]")
+                val result: String = APITask().execute("http://api.madangiron.kro.kr/users/" + reg.replace(fieldPhoneNumber.text.toString(),"")).get()
+                val res = JSONObject(result)
+                val resultObject = res.getJSONObject("result")
+                val checkId = resultObject.getString("user_check")
+                println(checkId.toBoolean())
+
+                if(checkId.toBoolean()){
+                    startPhoneNumberVerification("+82"+fieldPhoneNumber.text.toString())
+                    showHide(checkNumberTextView)
+                    showHide(buttonStartVerification)
+                    showHide(buttonVerifyPhone)
+                    showHide(buttonResend)
+                    showHide(fieldVerificationCode)
+                }
+                else{
+                    Toast.makeText(this, "이미 가입하셨습니다. 로그인을 진행해주세요.", Toast.LENGTH_LONG).show()
+                    startActivity(intent)
+                }
             }
             R.id.buttonVerifyPhone -> {
                 val code = fieldVerificationCode.text.toString()
@@ -359,7 +375,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
 
                 verifyPhoneNumberWithCode(storedVerificationId, code)
                 //로그인 화면으로 돌아가기
-                val intent = Intent(this, SignupPasswordActivity::class.java)
+                //val intent = Intent(this, SignupPasswordActivity::class.java)
                 startActivity(intent)
             }
             R.id.buttonResend -> resendVerificationCode(fieldPhoneNumber.text.toString(), resendToken)
