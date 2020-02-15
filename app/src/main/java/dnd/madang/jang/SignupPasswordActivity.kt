@@ -3,9 +3,8 @@ package dnd.madang.jang
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_findid.*
 import kotlinx.android.synthetic.main.activity_signuppassword.*
-import kotlinx.android.synthetic.main.activity_signuppassword.editTextPassWordConfirm
+import kotlinx.android.synthetic.main.activity_signuppassword.fieldPasswordConfirm
 
 class SignupPasswordActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?){
@@ -15,10 +14,11 @@ class SignupPasswordActivity : AppCompatActivity(){
 
         buttonPasswordSet.setOnClickListener {
             // 비밀번호 일치여부 확인 할 것!
-            println(editTextPassWord.text.toString())
-            println(editTextPassWordConfirm.text.toString())
-            if(editTextPassWord.text.toString().equals(editTextPassWordConfirm.text.toString())) {
+            println(fieldPassword.text.toString())
+            println(fieldPasswordConfirm.text.toString())
+            if(fieldPassword.text.toString().equals(fieldPasswordConfirm.text.toString())) {
                 println("작동")
+                intent.putExtra("password", fieldPassword.text.toString())
                 startActivity(intent)
             }
         }
