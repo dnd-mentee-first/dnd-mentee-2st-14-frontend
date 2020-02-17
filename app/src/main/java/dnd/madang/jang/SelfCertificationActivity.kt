@@ -23,7 +23,6 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var auth: FirebaseAuth
     // [END declare_auth]
 
-
     private var verificationInProgress = false
     private var storedVerificationId: String? = ""
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
@@ -346,6 +345,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                 if (!validatePhoneNumber()) {
                     return
                 }
+                // 정규표현식 객체 사용
                 val reg = Regex("[^0-9]")
                 val result: String = APITask().execute("http://api.madangiron.kro.kr/users/" + reg.replace(fieldPhoneNumber.text.toString(),"")).get()
                 val res = JSONObject(result)
@@ -360,6 +360,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                     showHide(buttonVerifyPhone)
                     showHide(buttonResend)
                     showHide(fieldVerificationCode)
+
                 }
                 else{
                     Toast.makeText(this, "이미 가입하셨습니다. 로그인을 진행해주세요.", Toast.LENGTH_LONG).show()
@@ -375,7 +376,9 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
 
                 verifyPhoneNumberWithCode(storedVerificationId, code)
                 //로그인 화면으로 돌아가기
-                //val intent = Intent(this, SignupPasswordActivity::class.java)
+                val intent = Intent(this, SignupPasswordActivity::class.java)
+                val reg = Regex("[^0-9]")
+                //intent.putExtra("id",reg.replace(fieldPhoneNumber.text.toString(),""))
                 startActivity(intent)
             }
             R.id.buttonResend -> resendVerificationCode(fieldPhoneNumber.text.toString(), resendToken)
