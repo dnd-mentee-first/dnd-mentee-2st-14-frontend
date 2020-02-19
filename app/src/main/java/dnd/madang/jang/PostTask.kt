@@ -13,10 +13,15 @@ class PostTask : AsyncTask <String, String, String>(){
     override fun doInBackground(vararg urls: String?): String? {
         try { //JSONObject를 만들고 key value 형식으로 값을 저장해준다.
             val jsonObject = JSONObject()
-            jsonObject.accumulate("user_id", urls[0])
-            jsonObject.accumulate("user_pw", urls[1])
-            jsonObject.accumulate("user_name", urls[2])
-            jsonObject.accumulate("user_nickname", urls[3])
+            println("urls0"+ urls[0])
+            println("urls1"+urls[1])
+            println("urls2"+urls[2])
+            println("urls3"+urls[3])
+            println("urls4"+urls[4])
+            jsonObject.accumulate("user_id", urls[1])
+            jsonObject.accumulate("user_pw", urls[2])
+            jsonObject.accumulate("user_name", urls[3])
+            jsonObject.accumulate("user_nickname", urls[4])
             var con: HttpURLConnection? = null
             var reader: BufferedReader? = null
             try {

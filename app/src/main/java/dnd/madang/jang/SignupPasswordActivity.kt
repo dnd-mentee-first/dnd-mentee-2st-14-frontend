@@ -10,16 +10,17 @@ class SignupPasswordActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signuppassword)
-        val intent = Intent(this, SignupNicknameActivity::class.java)
-
+        val nextIntent = Intent(this, SignupNicknameActivity::class.java)
         buttonPasswordSet.setOnClickListener {
             // 비밀번호 일치여부 확인 할 것!
             println(fieldPassword.text.toString())
             println(fieldPasswordConfirm.text.toString())
-            if(fieldPassword.text.toString().equals(fieldPasswordConfirm.text.toString())) {
+            if(fieldPassword.text.toString()==fieldPasswordConfirm.text.toString()) {
+                // Kotlin에서 ==연산자는 문자열 비교할 때 사용
+                nextIntent.putExtra("password", fieldPassword.text.toString())
+                nextIntent.putExtra("id", intent.getStringExtra("id"))
                 println("작동")
-                intent.putExtra("password", fieldPassword.text.toString())
-                startActivity(intent)
+                startActivity(nextIntent)
             }
         }
     }
