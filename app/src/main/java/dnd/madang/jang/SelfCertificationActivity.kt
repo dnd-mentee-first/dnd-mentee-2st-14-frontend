@@ -23,7 +23,6 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var auth: FirebaseAuth
     // [END declare_auth]
 
-
     private var verificationInProgress = false
     private var storedVerificationId: String? = ""
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
@@ -239,10 +238,10 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             updateUI(STATE_SIGNIN_SUCCESS, user)
-            println("if")
+            //println("if")
         } else {
             updateUI(STATE_INITIALIZED)
-            println("else")
+            //println("else")
         }
     }
 
@@ -340,18 +339,19 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View) {
-        val intent = Intent(this, LoginActivity::class.java)
+        var nextIntent = Intent(this, LoginActivity::class.java)
         when (view.id) {
             R.id.buttonStartVerification -> {
                 if (!validatePhoneNumber()) {
                     return
                 }
+                // 정규표현식 객체 사용
                 val reg = Regex("[^0-9]")
                 val result: String = APITask().execute("http://api.madangiron.kro.kr/users/" + reg.replace(fieldPhoneNumber.text.toString(),"")).get()
                 val res = JSONObject(result)
                 val resultObject = res.getJSONObject("result")
                 val checkId = resultObject.getString("user_check")
-                println(checkId.toBoolean())
+                println("checkId: " + checkId.toBoolean())
 
                 if(checkId.toBoolean()){
                     startPhoneNumberVerification("+82"+fieldPhoneNumber.text.toString())
@@ -360,10 +360,11 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                     showHide(buttonVerifyPhone)
                     showHide(buttonResend)
                     showHide(fieldVerificationCode)
+
                 }
                 else{
                     Toast.makeText(this, "이미 가입하셨습니다. 로그인을 진행해주세요.", Toast.LENGTH_LONG).show()
-                    startActivity(intent)
+                    startActivity(nextIntent)
                 }
             }
             R.id.buttonVerifyPhone -> {
@@ -374,9 +375,11 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 verifyPhoneNumberWithCode(storedVerificationId, code)
-                //로그인 화면으로 돌아가기
-                //val intent = Intent(this, SignupPasswordActivity::class.java)
-                startActivity(intent)
+                // 비밀번호 설정 하기
+                nextIntent = Intent(this, SignupPasswordActivity::class.java)
+                val reg = Regex("[^0-9]")
+                nextIntent.putExtra("id",reg.replace(fieldPhoneNumber.text.toString(),""))
+                startActivity(nextIntent)
             }
             R.id.buttonResend -> resendVerificationCode(fieldPhoneNumber.text.toString(), resendToken)
             //R.id.signOutButton -> signOut()
