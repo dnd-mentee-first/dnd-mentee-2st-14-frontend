@@ -103,7 +103,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             override fun onCodeSent(
-                verificationId: String
+                verificationId: String,
                 token: PhoneAuthProvider.ForceResendingToken
             ) {
                 // The SMS verification code has been sent to the provided phone number, we
