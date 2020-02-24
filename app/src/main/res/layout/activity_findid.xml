@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/findpw2"
+        android:id="@+id/phonenumcheck_btn"
         android:layout_width="394dp"
         android:layout_height="44dp"
         android:layout_marginStart="4dp"
