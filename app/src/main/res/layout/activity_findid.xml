@@ -48,7 +48,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="216dp"
         android:ems="10"
         android:hint="휴대폰번호 입력"
         android:inputType="phone"
