@@ -100,7 +100,7 @@ class SelfCertificationActivity : AppCompatActivity(){
             }
 
             override fun onCodeSent(
-                verificationId: String,
+                verificationId: String
                 token: PhoneAuthProvider.ForceResendingToken
             ) {
                 // The SMS verification code has been sent to the provided phone number, we
@@ -306,8 +306,8 @@ class SelfCertificationActivity : AppCompatActivity(){
             status.setText(R.string.signed_out)
         } else {
             // Signed in
-            phoneAuthFields.visibility = View.GONE
-            signedInButtons.visibility = View.VISIBLE
+            //phoneAuthFields.visibility = View.GONE
+            //signedInButtons.visibility = View.VISIBLE
 
             enableViews(fieldPhoneNumber, fieldVerificationCode)
             fieldPhoneNumber.text = null
