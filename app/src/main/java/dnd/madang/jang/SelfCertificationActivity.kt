@@ -182,7 +182,6 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
         val credential = PhoneAuthProvider.getCredential(verificationId!!, code)
         // [END verify_with_code]
         signInWithPhoneAuthCredential(credential)
-
     }
 
     // [START resend_verification]
@@ -293,7 +292,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                 //detail.setText(R.string.status_sign_in_failed)
             }
             STATE_SIGNIN_SUCCESS -> {
-                startActivity(intent)
+                //startActivity(intent)
             }
         } // Np-op, handled by sign-in check
 
@@ -346,11 +345,13 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                     return
                 }
                 // 정규표현식 객체 사용
-                val reg = Regex("[^0-9]")
-                val result: String = APITask().execute("http://api.madangiron.kro.kr/users/" + reg.replace(fieldPhoneNumber.text.toString(),"")).get()
-                val res = JSONObject(result)
-                val resultObject = res.getJSONObject("result")
-                val checkId = resultObject.getString("user_check")
+//                val reg = Regex("[^0-9]")
+//                val result: String = APITask().execute("http://api.madangiron.kro.kr/users/" + reg.replace(fieldPhoneNumber.text.toString(),"")).get()
+//                val res = JSONObject(result)
+//                val resultObject = res.getJSONObject("result")
+//                val checkId = resultObject.getString("user_check")
+
+                val checkId = "true"
                 println("checkId: " + checkId.toBoolean())
 
                 if(checkId.toBoolean()){
@@ -367,6 +368,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(nextIntent)
                 }
             }
+
             R.id.buttonVerifyPhone -> {
                 val code = fieldVerificationCode.text.toString()
                 if (TextUtils.isEmpty(code)) {
@@ -381,6 +383,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                 nextIntent.putExtra("id",reg.replace(fieldPhoneNumber.text.toString(),""))
                 startActivity(nextIntent)
             }
+
             R.id.buttonResend -> resendVerificationCode(fieldPhoneNumber.text.toString(), resendToken)
             //R.id.signOutButton -> signOut()
         }
