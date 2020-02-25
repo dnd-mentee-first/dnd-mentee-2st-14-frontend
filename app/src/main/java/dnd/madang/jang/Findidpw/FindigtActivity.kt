@@ -1,8 +1,10 @@
 package dnd.madang.jang.Findidpw
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import dnd.madang.jang.R
+import kotlinx.android.synthetic.main.activity_findigt.*
 
 class FindigtActivity : AppCompatActivity() {
 
@@ -13,10 +15,10 @@ class FindigtActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.findigtlay, FindidFragment())
             .commit()
-        /* phonenumcheck_btn.setOnClickListener(){
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.findigtlay, ChanegePWFragment())
-                .commit()
-        }*/
-}
+
+        var intent = Intent(this,ChanegePWActivity::class.java)
+        phonenumcheck_btn.setOnClickListener(){
+          startActivity(intent)
+        }
+    }
 }
