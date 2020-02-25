@@ -2,6 +2,7 @@ package dnd.madang.jang.Findidpw
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import dnd.madang.jang.R
 import kotlinx.android.synthetic.main.activity_findigt.*
@@ -18,7 +19,8 @@ class FindigtActivity : AppCompatActivity() {
 
         var intent = Intent(this,ChanegePWActivity::class.java)
         phonenumcheck_btn.setOnClickListener(){
-          startActivity(intent)
+            phonenumcheck_btn.setVisibility(View.GONE);
+            startActivity(intent)
         }
     }
 }
