@@ -292,7 +292,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                 //detail.setText(R.string.status_sign_in_failed)
             }
             STATE_SIGNIN_SUCCESS -> {
-                //startActivity(intent)
+                print("Hello World")
             }
         } // Np-op, handled by sign-in check
 
@@ -354,13 +354,14 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                 val checkId = "true"
                 println("checkId: " + checkId.toBoolean())
 
-                if(checkId.toBoolean()){
-                    startPhoneNumberVerification("+82"+fieldPhoneNumber.text.toString())
-                    showHide(checkNumberTextView)
-                    showHide(buttonStartVerification)
-                    showHide(buttonVerifyPhone)
-                    showHide(buttonResend)
-                    showHide(fieldVerificationCode)
+                    if(checkId.toBoolean()){
+                        startPhoneNumberVerification("+82"+fieldPhoneNumber.text.toString())
+                        showHide(checkNumberTextView)
+                        showHide(buttonStartVerification)
+                        showHide(buttonVerifyPhone)
+                        showHide(buttonResend)
+                        showHide(fieldVerificationCode)
+                        print("HIHIHIHIHIHII")
 
                 }
                 else{
