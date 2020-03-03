@@ -10,7 +10,15 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:dropDownListViewStyle">@style/MyListViewStyle</item>
+
     </style>
+
+
+<style name="MyListViewStyle" parent="@android:style/Widget.ListView">
+<item name="android:divider">#2c2626</item>
+<item name="android:dividerHeight">1dp</item>
+</style>
 
     <style name="full_Screen_darkBrown" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/blue_theme</item>
