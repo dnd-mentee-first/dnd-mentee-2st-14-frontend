@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dnd.madang.jang">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +14,7 @@
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@drawable/tos_check_box_selector" />
+
 
         <activity android:name=".MainActivity">
             <intent-filter>

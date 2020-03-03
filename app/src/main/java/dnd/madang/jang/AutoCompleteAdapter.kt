@@ -1,6 +1,7 @@
 package dnd.madang.jang
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,6 @@ import android.widget.ArrayAdapter
 import android.widget.Filter
 
 import java.util.ArrayList
-import android.widget.TextView
 import kotlinx.android.synthetic.main.row_serach.view.*
 
 
@@ -20,11 +20,14 @@ internal class AutoCompleteAdapter(context: Context,SearchList: List<SearchItem>
 
     init {
         searchListFull = ArrayList(SearchList)
+        Log.d("Init:::","AutoCompleteAdapter")
     }
+
+
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
-            val view = LayoutInflater.from(getContext()).inflate(
+            val view = LayoutInflater.from(context).inflate(
                 R.layout.row_serach, parent, false
             );
 
@@ -34,9 +37,9 @@ internal class AutoCompleteAdapter(context: Context,SearchList: List<SearchItem>
         val searchitem = getItem(position)
 
         if (searchitem != null) {
-            item_name_View.setText(searchitem.item_name)
-            category_name_View.setText(searchitem.category_name)
-            category_code_View.setText(searchitem.category_code)
+            item_name_View.setText(searchitem.mch_prd_name)
+            category_name_View.setText(searchitem.cate_name)
+            category_code_View.setText(searchitem.mch_prd_cate)
         }
 
 
@@ -59,7 +62,7 @@ internal class AutoCompleteAdapter(context: Context,SearchList: List<SearchItem>
                     val filterPattern = constraint.toString().toLowerCase().trim { it <= ' ' }
 
                     for (item in searchListFull) {
-                        if (item.item_name.toLowerCase().contains(filterPattern)) {
+                        if (item.mch_prd_name.toLowerCase().contains(filterPattern)) {
                             suggestions.add(item)
                         }
                     }
@@ -71,14 +74,14 @@ internal class AutoCompleteAdapter(context: Context,SearchList: List<SearchItem>
                 return results
             }
 
-            override fun publishResults(constraint: CharSequence, results: Filter.FilterResults) {
+            override fun publishResults(constraint: CharSequence?, results: Filter.FilterResults) {
                 clear()
                 addAll(results.values as ArrayList<SearchItem>)
                 notifyDataSetChanged()
             }
 
             override fun convertResultToString(resultValue: Any): CharSequence {
-                return (resultValue as SearchItem).item_name
+                return (resultValue as SearchItem).mch_prd_name
             }
         }
 
