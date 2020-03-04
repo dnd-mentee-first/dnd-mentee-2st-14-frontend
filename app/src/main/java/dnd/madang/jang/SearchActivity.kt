@@ -12,6 +12,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import android.view.WindowManager
+
+
 
 
 class SearchActivity : AppCompatActivity() {
@@ -21,15 +24,25 @@ class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activty_search)
+
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+
+
+        search_back_btn.setOnClickListener() {
+
+            onBackPressed()
+
+        }
+
+
         val mLayoutManager = LinearLayoutManager(this);
         search_recycle.setLayoutManager(mLayoutManager);
 
         search_btn.setOnClickListener() {
             CloseKeyboard()
-            SearchList.clear()
+            Log.d("SetOnClick_Seart_btn","Click")
             receiveDatasfromAPI(search_edit.text.toString())
-            val adapter = SearchAdapter(SearchList)
-            search_recycle.adapter = adapter
+
 
 
 
@@ -42,20 +55,6 @@ class SearchActivity : AppCompatActivity() {
         // Calling setSystemUiVisibility() with a value of 0 clears
         // all flags.
 
-
-//       AT.setOnItemClickListener { adapterView, view, position, rowId ->
-//           Log.d("tag", "position: $position, rowId:$rowId, string: ${adapterView.getItemAtPosition(position)}")
-//           val item_name = SearchList[position].mch_prd_name
-//           val category_name = SearchList[position].cate_name
-//           val category_code = SearchList[position].mch_prd_cate
-//           Log.d("tag","이름 : $item_name,카테고리 이름: $category_name,카테고리 코드:$category_code")
-//
-//    }
-
-
-
-
-
     }
 
     private fun receiveDatasfromAPI(itemname : String) {
@@ -66,10 +65,13 @@ class SearchActivity : AppCompatActivity() {
             override fun onFailure(call : Call<BaseResponse>?, t: Throwable?) {}
             override fun onResponse(call : Call<BaseResponse>?, response : Response<BaseResponse>) {
                 Log.d("Response::",response.body()?.result?.products?.get(0)?.mch_prd_name)
+                SearchList.clear()
                 var data : ArrayList<SearchItem>? = response?.body()?.result?.products
                 for (i in data!!){
                     Log.i("data:::",i.mch_prd_name)
                     SearchList.add(i)
+                    val adapter = SearchAdapter(SearchList)
+                    search_recycle.adapter = adapter
 
                 }
 
