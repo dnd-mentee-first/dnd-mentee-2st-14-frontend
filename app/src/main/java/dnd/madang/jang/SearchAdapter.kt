@@ -1,6 +1,8 @@
 package dnd.madang.jang
 
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.card_search.view.*
 
 
-class SearchAdapter(private val items: ArrayList<SearchItem>) :
+class SearchAdapter(private val context : Context, private val items: ArrayList<SearchItem>) :
     RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     override fun getItemCount() = items.size
@@ -18,6 +20,9 @@ class SearchAdapter(private val items: ArrayList<SearchItem>) :
         val item = items[position]
         val listener = View.OnClickListener {it ->
             Toast.makeText(it.context, "Clicked: ${item.mch_prd_name}", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context,BuyActivity::class.java)
+            context.startActivity(intent)
+
         }
         holder.apply {
             bind(listener, item)
