@@ -27,7 +27,6 @@ class SearchActivity : AppCompatActivity() {
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
-
         search_back_btn.setOnClickListener() {
 
             onBackPressed()
@@ -41,7 +40,7 @@ class SearchActivity : AppCompatActivity() {
         search_btn.setOnClickListener() {
             CloseKeyboard()
             Log.d("SetOnClick_Seart_btn","Click")
-            receiveDatasfromAPI(search_edit.text.toString())
+            receiveDatasfromAPI(this,search_edit.text.toString())
 
 
 
@@ -57,7 +56,7 @@ class SearchActivity : AppCompatActivity() {
 
     }
 
-    private fun receiveDatasfromAPI(itemname : String) {
+    private fun receiveDatasfromAPI(context : Context,itemname : String) {
         val retrofit = Retrofit.Builder().baseUrl("http://api.madangiron.kro.kr/").addConverterFactory(
             GsonConverterFactory.create()).build()
         val retrofit_service =  retrofit.create(RetrofitService::class.java)
@@ -70,7 +69,7 @@ class SearchActivity : AppCompatActivity() {
                 for (i in data!!){
                     Log.i("data:::",i.mch_prd_name)
                     SearchList.add(i)
-                    val adapter = SearchAdapter(SearchList)
+                    val adapter = SearchAdapter(context,SearchList)
                     search_recycle.adapter = adapter
 
                 }
