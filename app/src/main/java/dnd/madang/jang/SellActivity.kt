@@ -1,38 +1,28 @@
 package dnd.madang.jang
 
-import android.R.attr.entries
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.utils.ColorTemplate
-import kotlinx.android.synthetic.main.activity_buy.*
-import java.security.AccessController.getContext
+import kotlinx.android.synthetic.main.activity_sell.*
 
 
-class BuyActivity : AppCompatActivity(), View.OnClickListener {
+class SellActivity : AppCompatActivity(), View.OnClickListener {
+
 
     private var ItemList = ArrayList<Status_Btn>()
-    private var ExampleList = ArrayList<Entry>()
     private var ExampleLabel = ArrayList<String>()
     private var state : String = "S"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_buy)
+        setContentView(R.layout.activity_sell)
+
         textItem.text = intent.getStringExtra("PrdName")
         setChart()
         ExampleVO()
@@ -204,7 +194,3 @@ class BuyActivity : AppCompatActivity(), View.OnClickListener {
 
 
 }
-
-
-
-//sign up test

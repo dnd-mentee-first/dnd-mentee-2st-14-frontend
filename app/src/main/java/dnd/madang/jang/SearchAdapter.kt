@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.card_search.view.*
 
 
-class SearchAdapter(private val context : Context, private val items: ArrayList<SearchItem>) :
+class SearchAdapter(private val context : Context, private val items: ArrayList<SearchItem>,private val how : String?) :
     RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     override fun getItemCount() = items.size
@@ -20,8 +20,17 @@ class SearchAdapter(private val context : Context, private val items: ArrayList<
         val item = items[position]
         val listener = View.OnClickListener {it ->
             Toast.makeText(it.context, "Clicked: ${item.mch_prd_name}", Toast.LENGTH_SHORT).show()
+
             val intent = Intent(context,BuyActivity::class.java)
-            context.startActivity(intent)
+            val intent2 = Intent(context,SellActivity::class.java)
+            intent.putExtra("PrdName",item.mch_prd_name)
+            intent2.putExtra("PrdName",item.mch_prd_name)
+
+
+            if(how == "buy")
+                context.startActivity(intent)
+            else(how == "sell")
+                context.startActivity(intent2)
 
         }
         holder.apply {
