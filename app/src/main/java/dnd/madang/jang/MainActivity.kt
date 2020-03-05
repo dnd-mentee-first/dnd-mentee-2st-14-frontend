@@ -16,9 +16,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val intent = Intent(this,SearchActivity::class.java)
-
+        intent.putExtra("how","buy")
+        val intent2 = Intent(this,SearchActivity::class.java)
+        intent2.putExtra("how","sell")
         imageButton2.setOnClickListener() {
             startActivity(intent)
+        }
+        sell_btn.setOnClickListener() {
+            startActivity(intent2)
         }
     }
 

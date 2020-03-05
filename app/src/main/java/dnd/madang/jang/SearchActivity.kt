@@ -20,11 +20,12 @@ import android.view.WindowManager
 class SearchActivity : AppCompatActivity() {
 
     private var SearchList = ArrayList<SearchItem>()
+    private var how : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activty_search)
-
+        how = intent.getStringExtra("how")
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
         search_back_btn.setOnClickListener() {
@@ -69,7 +70,7 @@ class SearchActivity : AppCompatActivity() {
                 for (i in data!!){
                     Log.i("data:::",i.mch_prd_name)
                     SearchList.add(i)
-                    val adapter = SearchAdapter(context,SearchList)
+                    val adapter = SearchAdapter(context,SearchList,how)
                     search_recycle.adapter = adapter
 
                 }
