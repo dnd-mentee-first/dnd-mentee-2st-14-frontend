@@ -92,13 +92,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textPrice" />
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/buy_chart"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="22dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="5dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toTopOf="@+id/textState"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textinfo"></com.github.mikephil.charting.charts.LineChart>
+        app:layout_constraintTop_toBottomOf="@+id/textinfo"
+        app:layout_constraintVertical_bias="0.524">
+
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/buy_chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textinfo"></com.github.mikephil.charting.charts.LineChart>
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/textPrice"
@@ -118,13 +138,80 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCode" />
 
+    <Button
+        android:id="@+id/buy_btn"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/button_background_db"
+        android:fontFamily="@font/nanumsquareeb"
+        android:text="구매신청"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldHopePrice"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/status_btn_a"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:alpha="0.5"
+        android:background="@drawable/border_bg_transparent"
+        android:fontFamily="@font/nanumsquarel"
+        android:gravity="center"
+        android:text="A"
+        android:textColor="#2C2626"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/status_btn_b"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/status_btn_s"
+        app:layout_constraintTop_toBottomOf="@+id/textState" />
+
+    <TextView
+        android:id="@+id/status_btn_b"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:alpha="0.5"
+        android:background="@drawable/border_bg_transparent"
+        android:fontFamily="@font/nanumsquarel"
+        android:gravity="center"
+        android:text="B"
+        android:textColor="#2C2626"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/status_btn_c"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/status_btn_a"
+        app:layout_constraintTop_toBottomOf="@+id/textState" />
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/nanumsquareb"
+        android:text="희망가격"
+        android:textColor="#2c2626"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/status_btn_s" />
+
     <TextView
         android:id="@+id/textState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="340dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginBottom="280dp"
         android:background="#00000000"
         android:ems="10"
         android:fontFamily="@font/nanumsquareb"
@@ -136,27 +223,46 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView41"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/fieldHopePrice"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="42dp"
-        android:fontFamily="@font/nanumsquareb"
-        android:text="희망가격"
-        android:textColor="#2c2626"
-        android:textSize="24sp"
+        android:layout_marginStart="45dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView37" />
+        app:layout_constraintTop_toBottomOf="@+id/textView41" />
 
     <TextView
-        android:id="@+id/textView40"
+        android:id="@+id/status_btn_s"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:alpha="1"
+        android:background="@drawable/border_bg_transparent"
+        android:fontFamily="@font/nanumsquarel"
+        android:gravity="center"
+        android:text="S"
+        android:textColor="#2C2626"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/status_btn_a"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textState" />
+
+    <TextView
+        android:id="@+id/status_btn_c"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
         android:alpha="0.5"
@@ -167,96 +273,7 @@
         android:textColor="#2C2626"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView39"
+        app:layout_constraintStart_toEndOf="@+id/status_btn_b"
         app:layout_constraintTop_toBottomOf="@+id/textState" />
-
-    <TextView
-        android:id="@+id/textView37"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="8dp"
-        android:alpha="1"
-        android:background="@drawable/border_bg_transparent"
-        android:fontFamily="@font/nanumsquarel"
-        android:gravity="center"
-        android:text="S"
-        android:textColor="#2C2626"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView38"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textState" />
-
-    <TextView
-        android:id="@+id/textView39"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="8dp"
-        android:alpha="0.5"
-        android:background="@drawable/border_bg_transparent"
-        android:fontFamily="@font/nanumsquarel"
-        android:gravity="center"
-        android:text="B"
-        android:textColor="#2C2626"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView40"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView38"
-        app:layout_constraintTop_toBottomOf="@+id/textState" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView41" />
-
-    <TextView
-        android:id="@+id/textView38"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="8dp"
-        android:alpha="0.5"
-        android:background="@drawable/border_bg_transparent"
-        android:fontFamily="@font/nanumsquarel"
-        android:gravity="center"
-        android:text="A"
-        android:textColor="#2C2626"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView39"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView37"
-        app:layout_constraintTop_toBottomOf="@+id/textState" />
-
-    <Button
-        android:id="@+id/login_btn2"
-        android:layout_width="330dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/button_background_db"
-        android:fontFamily="@font/nanumsquareeb"
-        android:text="구매신청"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
