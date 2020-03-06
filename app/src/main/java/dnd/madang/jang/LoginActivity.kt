@@ -11,6 +11,8 @@ import dnd.madang.jang.Findidpw.FindigtActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activty_search.*
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,28 +42,36 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login_btn.setOnClickListener{
-            receiveDatasfromAPI(this,ID.getText().toString(),PW.getText().toString())
+            receiveDatasfromAPI(this,ID.text.toString(),PW.text.toString())
 
         }
     }
 
+    private fun createOkHttpClient(): OkHttpClient {
+        val builder = OkHttpClient.Builder()
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        builder.addInterceptor(interceptor)
+        return builder.build()
+    }
     private fun receiveDatasfromAPI(context : Context, user_id : String,user_pw : String){
 
         Log.d("Response::","Clicked receive")
-        val retrofit = Retrofit.Builder().baseUrl("http://api.madangiron.kro.kr/").addConverterFactory(
+        val retrofit = Retrofit.Builder().baseUrl("http://api.madangiron.kro.kr/") .client(createOkHttpClient()).addConverterFactory(
             GsonConverterFactory.create()).build()
         val retrofit_service =  retrofit.create(RetrofitService::class.java)
+
+
         Log.d("CheckID","ID$user_id,PW$user_pw")
-        retrofit_service.loginAccount(LoginVO(user_id,user_pw)).enqueue(object : Callback<AccountBaseResponse> {
+        retrofit_service.loginAccount(user_id,user_pw).enqueue(object : Callback<AccountBaseResponse> {
 
             override fun onFailure(call : Call<AccountBaseResponse>?, t: Throwable?) {
                 Log.d("Response::","No Repsonse")
                 Log.d("Response::","Log${t.toString()}")
             }
             override fun onResponse(call : Call<AccountBaseResponse>?, response : Response<AccountBaseResponse>) {
-                Log.d("Response:::r",response.body()?.result?.isLoggedin.toString())
-
-                var isLoggedIn : String = response.body()?.result?.isLoggedin.toString()
+                Log.d("Response:::r",response.body()?.result?.isLoggedIn.toString())
+                var isLoggedIn : String = response.body()?.result?.isLoggedIn.toString()
                 if(isLoggedIn == "true") {
                     val intent3 = Intent(context, MainActivity::class.java)
                     startActivity(intent3)
