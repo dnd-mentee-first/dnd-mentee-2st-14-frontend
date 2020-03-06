@@ -1,11 +1,16 @@
 package dnd.madang.jang
 
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface RetrofitService {
     @GET("search/prdName")
     fun searchProducts(@Query("prd_name")prd_name:String): Call<BaseResponse>
+
+    @Headers("Content-Type:application/x-www-form-urlencoded")
+    @POST("auth/login")
+    fun loginAccount(@Body loginVO : LoginVO): Call<AccountBaseResponse>
+
+    //fun loginAccount(@Field("user_id") user_id :String,@Field("user_pw")user_pw:String): Call<AccountBaseResponse>
+
 }
