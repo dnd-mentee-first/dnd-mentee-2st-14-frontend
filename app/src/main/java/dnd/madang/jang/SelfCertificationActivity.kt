@@ -292,6 +292,10 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                 //detail.setText(R.string.status_sign_in_failed)
             }
             STATE_SIGNIN_SUCCESS -> {
+                val nextIntent = Intent(this, SignupPasswordActivity::class.java)
+                val reg = Regex("[^0-9]")
+                nextIntent.putExtra("id",reg.replace(fieldPhoneNumber.text.toString(),""))
+                startActivity(nextIntent)
                 print("Hello World")
             }
         } // Np-op, handled by sign-in check
@@ -345,13 +349,12 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                     return
                 }
                 // 정규표현식 객체 사용
-//                val reg = Regex("[^0-9]")
-//                val result: String = APITask().execute("http://api.madangiron.kro.kr/users/" + reg.replace(fieldPhoneNumber.text.toString(),"")).get()
-//                val res = JSONObject(result)
-//                val resultObject = res.getJSONObject("result")
-//                val checkId = resultObject.getString("user_check")
+                val reg = Regex("[^0-9]")
+                val result: String = APITask().execute("http://api.madangiron.kro.kr/users/" + reg.replace(fieldPhoneNumber.text.toString(),"")).get()
+                val res = JSONObject(result)
+                val resultObject = res.getJSONObject("result")
+                val checkId = resultObject.getString("user_check")
 
-                val checkId = "true"
                 println("checkId: " + checkId.toBoolean())
 
                     if(checkId.toBoolean()){
@@ -361,7 +364,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
                         showHide(buttonVerifyPhone)
                         showHide(buttonResend)
                         showHide(fieldVerificationCode)
-                        print("HIHIHIHIHIHII")
+                        //print("HIHIHIHIHIHII")
 
                 }
                 else{
@@ -379,10 +382,7 @@ class SelfCertificationActivity : AppCompatActivity(), View.OnClickListener {
 
                 verifyPhoneNumberWithCode(storedVerificationId, code)
                 // 비밀번호 설정 하기
-                nextIntent = Intent(this, SignupPasswordActivity::class.java)
-                val reg = Regex("[^0-9]")
-                nextIntent.putExtra("id",reg.replace(fieldPhoneNumber.text.toString(),""))
-                startActivity(nextIntent)
+
             }
 
             R.id.buttonResend -> resendVerificationCode(fieldPhoneNumber.text.toString(), resendToken)
